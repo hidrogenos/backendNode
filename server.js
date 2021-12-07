@@ -1,27 +1,16 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const response = require('./network/response');
-const router = express.Router();
+
+const router = require('./network/routes');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(router);
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-router.get("/message", (req, res) => {
-  console.log(req.headers);
-  // res.send("Lista de mensajes");
-  response.success(req, res, 'Lista de mensajes');
-});
+router(app);
 
-router.post("/message", (req, res) => {
-  res.send("Mesaje añadido");
-});
 
-router.delete("/message", (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.send("Mesaje eliminado");
-});
 
 app.use('/app', express.static('public'));
 
