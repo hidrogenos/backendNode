@@ -1,5 +1,9 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+
+const db = require('./db');
+db('mongodb://localhost:27017/telegrom');
+
 const response = require('./network/response');
 
 const router = require('./network/routes');
