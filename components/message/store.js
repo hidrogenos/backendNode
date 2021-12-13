@@ -1,10 +1,6 @@
 
 const Model = require('./model');
 
-// mongodb://localhost:27017/admin/telegrom
-
-
-
 const addMessage = (message) => {
     const myMessage = new Model(message);
     myMessage.save();
